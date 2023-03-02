@@ -1,0 +1,43 @@
+﻿@model TranslateVm
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+<div class="text-center my-5">
+    <h1 class="display-4">Welcome</h1>
+</div>
+<section class="container">
+    <div class="row">
+        <div class="col-12 col-md-6 p-4 bg-light">
+            <form asp-action="TranslateText" class="">
+                <div class="mb-3">
+                    <label asp-for="SourceLanguage" class="form-label"></label>
+                    <input class="form-control" asp-for="SourceLanguage" aria-describedby="h1">
+                    <div id="h1" class="form-text">The source language you want to translate</div>
+                </div>
+                <div class="mb-3">
+                    <label asp-for="DestinationLanguage" class="form-label"></label>
+                    <input class="form-control" asp-for="DestinationLanguage" aria-describedby="h2">
+                    <div id="h2" class="form-text">Target languages you want to translate, separated by commas</div>
+                </div>
+                <div class="mb-3">
+                    <label asp-for="Text" class="form-label"></label>
+                    <textarea class="form-control" asp-for="Text" aria-describedby="h3" rows="3"></textarea>
+                    <div id="h3" class="form-text">The text you want to translate</div>
+                </div>
+                
+                <button type="submit" class="btn btn-primary">Submit</button>
+            </form>
+        </div>
+        <div class="col-12 col-md-6 p-4">
+            @if (!string.IsNullOrEmpty(Model.Result))
+            {
+                <h3>Result:</h3>
+                <div class="bg-success bg-opacity-50 p-4">
+                    @Html.Raw(Model.Result)
+                </div>
+            }
+        </div>
+
+    </div>
+</section>
