@@ -9,7 +9,7 @@ namespace transiple.Controllers
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;
-        private readonly string _openAIApiKey = "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";
+        private readonly string? _openAIApiKey = Environment.GetEnvironmentVariable("OPENAI_API_KEY");
         public HomeController(ILogger<HomeController> logger)
         {
             _logger = logger;
